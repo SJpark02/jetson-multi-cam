@@ -3,3 +3,7 @@ gst-launch-1.0 nvarguscamerasrc sensor-id=0 ! 'video/x-raw(memory:NVMM), width=1
 
 
 gst-launch-1.0 udpsrc port=5000 caps="application/x-rtp, media=(string)video, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! autovideosink
+
+
+
+gst-launch-1.0 udpsrc port=5000 caps="application/x-rtp, media=(string)video, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! h264parse ! nvv4l2decoder ! nvvidconv ! nveglglessink
